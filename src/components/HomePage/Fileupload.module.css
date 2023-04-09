@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+}
+
+.content {
+  text-align: center;
+  line-height: 20px;
+  padding: 20px;
+}
+
+.content h5 {
+  font-size: 12px;
+  color: grey;
+  font-weight: 600;
+}
+.content p {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 2px;
+  color: rgb(75, 73, 73);
+}
+.main {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 5%;
+  border: 3px dashed black;
+}
+
+span {
+  color: rgb(55, 55, 222);
+}
+
+p {
+  font-weight: lighter;
+  font-size: 13px;
+  justify-content: space-evenly;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px 1px blue;
+  border-radius: 100px;
+}
+
+.status p {
+  text-align: center;
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 10px;
+}

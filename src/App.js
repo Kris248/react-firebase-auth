@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from "./components/Authentication/Login/Login";
+import Signup from "./components/Authentication/Signup/Signup";
+import { auth } from "./firebase";
+import "./App.css";
+import Root from "./components/Root";
+import Uploadquote from "./components/HomePage/Fileupload";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserName(user.displayName);
+        console.log(user.displayName);
+        console.log(user.email);
+      } else setUserName("");
+    });
+  }, []);
+
+
+  const router = createBrowserRouter([
+    { 
+      path: '/',
+      element: <Root name = {userName}/>,
+      children:[
+        { path: '/homepage', element: <Uploadquote/>},
+        { path: '/', element: <Login/>},
+        { path: '/signup', element: <Signup/>},
+      ],
+    },
+  ])
+
+
+  return <RouterProvider router={router} />
+  
 }
 
 export default App;
